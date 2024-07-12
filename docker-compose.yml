@@ -1,7 +1,7 @@
 services:
   headless:
     container_name: resonite-headless
-    image: gloopie
+    image: headless-docker
     env_file: .env
     tty: true
     stdin_open: true
