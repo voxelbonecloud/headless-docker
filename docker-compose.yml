@@ -1,7 +1,7 @@
 services:
   headless:
     container_name: resonite-headless
-    image: headless-docker
+    image: ghcr.io/voxelbonecloud/headless-docker:main 
     env_file: .env
     tty: true
     stdin_open: true
