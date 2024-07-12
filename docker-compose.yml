@@ -9,5 +9,8 @@ services:
     volumes:
       - "/etc/localtime:/etc/localtime:ro"
       - "./Config:/Config:ro"
-      - "./Logs:/Logs"
+      - logs:/Logs
     restart: on-failure:5
+
+volumes:
+  logs:
