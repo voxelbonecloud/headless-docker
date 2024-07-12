@@ -7,6 +7,10 @@ RUN	apt update \
 	&& apt install curl lib32gcc-s1 libfreetype6 -y \
 	&& useradd -m -d /home/container -s /bin/bash container
 
+RUN	mkdir /Logs \
+	&& chown -R container:container /Logs
+USER	container
+
 USER	container
 ENV	USER=container 
 ENV	HOME=/home/container
