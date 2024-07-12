@@ -1,0 +1,13 @@
+services:
+  headless:
+    container_name: resonite-headless
+    image: gloopie
+    env_file: .env
+    tty: true
+    stdin_open: true
+    user: "1000:1000"
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - "./Config:/Config:ro"
+      - "./Logs:/Logs"
+    restart: on-failure:5
