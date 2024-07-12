@@ -4,7 +4,7 @@ LABEL	author="Voxel Bone Cloud" maintainer="github@voxelbone.cloud"
 
 RUN	apt update \
 	&& dpkg --add-architecture i386 \
-	&& apt install curl lib32gcc-s1 -y \
+	&& apt install curl lib32gcc-s1 libfreetype6 -y \
 	&& useradd -m -d /home/container -s /bin/bash container
 
 USER	container
