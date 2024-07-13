@@ -2,3 +2,4 @@ STEAM_USER=usernamehere
 STEAM_PASS=steampasswordhere
 BETA_CODE=betacodehere
 STEAM_BRANCH=headless
+LOG_RETENTION=30
