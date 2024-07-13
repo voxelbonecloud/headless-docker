@@ -3,14 +3,17 @@ services:
     container_name: resonite-headless
     image: ghcr.io/voxelbonecloud/headless-docker:main 
     env_file: .env
+    environment:
+      CONFIG_FILE: Config.json
+      #ADDITIONAL_ARGUMENTS:
     tty: true
     stdin_open: true
     user: "1000:1000"
     volumes:
       - "/etc/localtime:/etc/localtime:ro"
-      - "./Config:/Config:ro"
-      - logs:/Logs
+      - "Headless_Configs:/Config:ro"
+      - "Headless_Logs:/Logs"
     restart: on-failure:5
-
 volumes:
-  logs:
+  Headless_Configs:
+  Headless_Logs:
