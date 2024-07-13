@@ -5,6 +5,11 @@ on:
     - cron: '24 1 * * 1'
   push:
     branches: [ "main" ]
+    paths:
+      - 'scripts/**'
+      - 'Dockerfile'
+      - 'entrypoint.sh'
+      - '.github/workflows/**'
 
 env:
   # Use docker.io for Docker Hub if empty
