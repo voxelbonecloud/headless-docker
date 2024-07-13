@@ -2,7 +2,7 @@
 
 rm -r /home/container/Headless/Data
 rm -r /home/container/Headless/Cache
-find /Logs -type f -name *.log -atime +30 -delete
+find /Logs -type f -name *.log -atime +${LOG_RETENTION} -delete
 
 cd /home/container/Headless/net8.0
 dotnet Resonite.dll -HeadlessConfig /Config/${CONFIG_FILE} -Logs /Logs/ ${ADDITIONAL_ARGUMENTS}
