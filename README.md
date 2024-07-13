@@ -49,6 +49,7 @@ Otherwise example below.
     STEAM_BRANCH="headless"
     LOG_RETENTION="30"
 LOG_RETENTION will default to 30 days if left unset or removed.
+
 Additional variables are 
 
     CONFIG_FILE="Config.json"
