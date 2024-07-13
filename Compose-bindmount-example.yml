@@ -11,9 +11,6 @@ services:
     user: "1000:1000"
     volumes:
       - "/etc/localtime:/etc/localtime:ro"
-      - "Headless_Configs:/Config:ro"
-      - "Headless_Logs:/Logs"
+      - "Path/youwant/to/bindtoo/Config:/Config:ro"
+      - "Path/youwant/to/bindtoo/Logs:/Logs"
     restart: on-failure:5
-volumes:
-  Headless_Configs:
-  Headless_Logs:
