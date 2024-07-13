@@ -15,7 +15,7 @@ You will need a config.json file for the headless to load. Examples for Resonite
 ## Example Compose file
 The following compose file uses stack wide environmental variables to set common values that may be used across multiple headless servers in the one stack. This allows adjusting config files for individual servers but reuse for example steam credentials for downloading server files.
 
-For a version of the compose file not using the .env file then use [compose-noenv-example.yml](compose-noenv-example.yml)
+For a version of the compose file not using the .env file then use [compose-noenv-example.yml](examples/compose-noenv-example.yml)
 
 Example Compose file
 
@@ -59,7 +59,7 @@ Additional variables are
 
 ## Using this image
 This image by default stores the Config files and logs in named volumes that persist between container restarts/recreation. The cache and database are automatically cleared every restart of the headless or container. 
-If you prefer to bind all the locations to a location on the host for easy management then use something like [Compose-bindmount-example.yml](Compose-bindmount-example.yml)
+If you prefer to bind all the locations to a location on the host for easy management then use something like [compose-bindmount-example.yml](examples/compose-bindmount-example.yml)
 
 The installation of the headless inside the container is wiped every time the container is deleted or updated so you can start fresh with a new container.
 However if you are wanting to mod your headless server this behavior is not ideal. [Please read the Modding section to change this.](Modding)
