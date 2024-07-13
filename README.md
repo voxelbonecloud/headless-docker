@@ -55,5 +55,6 @@ LOG_RETENTION will default to 30 days if left unset or removed.
 ## Using this image
 This image by default stores the Config files and logs in named volumes that persist between container restarts/recreation. The cache and database are automatically cleared every restart of the headless or container. 
 If you prefer to bind all the locations to a location on the host for easy management look into XXX
+
 The installation of the headless inside the container is wiped every time the container is deleted or updated so you can start fresh with a new container.
 However if you are wanting to mod your headless server this behavior is not ideal. [Please read the Modding section to change this.](Modding)
