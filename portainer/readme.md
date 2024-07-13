@@ -1,5 +1,6 @@
 
 
+
 # Portainer Setup
 
 To use the compose files for Portainer the main change is simply replacing the env_file value with **stack.env**
@@ -29,5 +30,7 @@ To use the compose files for Portainer the main change is simply replacing the e
 ## Environmental Variables
 To simply add the required environmental variables on the stack creation page. 
 Click **Advanced mode** under the Environment variables section.
+![portaineradvancemode](portainer/images/portainer-env.png)
+
 Paste the contents of the [environment-portainer-examples](environment-portainer-examples) file straight into the text box that showed up. 
 Swap back to simple mode and edit the values as required. 
