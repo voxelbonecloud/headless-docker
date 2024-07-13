@@ -47,10 +47,14 @@ Otherwise example below.
     STEAM_PASS="YourSteamPassword"
     BETA_CODE="SteamBetaCode"
     STEAM_BRANCH="headless"
-    CONFIG_FILE="Config.json"
-    ADDITIONAL_ARGUMENTS=""
     LOG_RETENTION="30"
 LOG_RETENTION will default to 30 days if left unset or removed.
+Additional variables are 
+
+    CONFIG_FILE="Config.json"
+    ADDITIONAL_ARGUMENTS=""
+    
+   However by default these two are defined inside the compose file itself so they can be adjusted on  a per-headless basis instead of an entire stack. If you prefer everything in the one .env file you can move them over.
 
 ## Using this image
 This image by default stores the Config files and logs in named volumes that persist between container restarts/recreation. The cache and database are automatically cleared every restart of the headless or container. 
