@@ -10,7 +10,7 @@ RUN	apt update \
 RUN	mkdir /Logs \
 	&& chown -R container:container /Logs
 
-RUN	mkdir /RML \
+RUN	mkdir -p /RML /RML/rml_mods /RML/rml_libs /RML/rml_config \
 	&& chown -R container:container /RML
 USER	container
 
