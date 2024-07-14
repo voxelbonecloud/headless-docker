@@ -9,6 +9,9 @@ RUN	apt update \
 
 RUN	mkdir /Logs \
 	&& chown -R container:container /Logs
+
+RUN	mkdir /RML \
+	&& chown -R container:container /RML
 USER	container
 
 USER	container
