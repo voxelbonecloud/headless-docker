@@ -2,7 +2,7 @@
 
 # Resonite Headless 
 
-Docker image based on Debian Bookworm Slim image with dotnet8 for hosting Resonite Headless servers. 
+Docker image based on Debian Bookworm Slim image with dotnet8 for hosting Resonite Headless servers. Supports automatic mod support.
 
 You can find examples for [Portainer deployments Here](portainer/)
 
@@ -19,25 +19,30 @@ For a version of the compose file not using the .env file then use [compose-noen
 
 Example Compose file
 
-    services:
-      headless:
-        container_name: resonite-headless
-        image: ghcr.io/voxelbonecloud/headless-docker:main 
-        env_file: .env
-        environment:
-          CONFIG_FILE: Config.json
-          #ADDITIONAL_ARGUMENTS:
-        tty: true
-        stdin_open: true
-        user: "1000:1000"
-        volumes:
-          - "/etc/localtime:/etc/localtime:ro"
-          - "Headless_Configs:/Config:ro"
-          - "Headless_Logs:/Logs"
-        restart: on-failure:5
+```
+services:
+  headless:
+    container_name: resonite-headless
+    image: ghcr.io/voxelbonecloud/headless-docker:main 
+    env_file: .env
+    environment:
+      CONFIG_FILE: Config.json
+      ENABLE_MODS: false
+      #ADDITIONAL_ARGUMENTS:
+    tty: true
+    stdin_open: true
+    user: "1000:1000"
     volumes:
-      Headless_Configs:
-      Headless_Logs:
+      - "/etc/localtime:/etc/localtime:ro"
+      - "Headless_Configs:/Config:ro"
+      - "Headless_Logs:/Logs"
+      - "RML:/RML"
+    restart: on-failure:5
+volumes:
+  Headless_Configs:
+  Headless_Logs:
+  RML:
+```
 
 ## Environmental Variables
 Latest Environmental Variables can be found in [example.env](example.env)
@@ -54,11 +59,14 @@ Additional variables are
 
     CONFIG_FILE="Config.json"
     ADDITIONAL_ARGUMENTS=""
+    ENABLE_MODS="false"
     
-   However by default these two are defined inside the compose file itself so they can be adjusted on  a per-headless basis instead of an entire stack. If you prefer everything in the one .env file you can move them over.
+   However by default these three are defined inside the compose file itself so they can be adjusted on a per-headless basis instead of an entire stack. This allows you to for example mix and match modded and unmodded servers within the same stack. An example of that is [compose-multiple-servers-example.yml](examples/compose-multiple-servers-example.yml). If you prefer and this is not required you can move these over to the stack wide variables. 
 
-## Using this image
+## Important notes
 This image by default stores the Config files and logs in named volumes that persist between container restarts/recreation. The cache and database are automatically cleared every restart of the headless or container. 
 If you prefer to bind all the locations to a location on the host for easy management then use something like [compose-bindmount-example.yml](examples/compose-bindmount-example.yml)
 
-Modding is currently WIP [Please Read our Modding Section](modding)
+## Enabling Mods
+
+To enable mods, change the variable ENABLE_MODS to true. Copy your mod files into the corresponding folders inside the RML volume [Read our Modding section for more info and how to use](modding)

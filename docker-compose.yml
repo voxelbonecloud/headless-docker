@@ -5,6 +5,7 @@ services:
     env_file: .env
     environment:
       CONFIG_FILE: Config.json
+      ENABLE_MODS: false
       #ADDITIONAL_ARGUMENTS:
     tty: true
     stdin_open: true
@@ -13,7 +14,9 @@ services:
       - "/etc/localtime:/etc/localtime:ro"
       - "Headless_Configs:/Config:ro"
       - "Headless_Logs:/Logs"
+      - "RML:/RML"
     restart: on-failure:5
 volumes:
   Headless_Configs:
   Headless_Logs:
+  RML:

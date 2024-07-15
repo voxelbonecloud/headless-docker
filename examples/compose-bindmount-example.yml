@@ -5,6 +5,7 @@ services:
     env_file: .env
     environment:
       CONFIG_FILE: Config.json
+      ENABLE_MODS: false
       #ADDITIONAL_ARGUMENTS:
     tty: true
     stdin_open: true
@@ -13,4 +14,5 @@ services:
       - "/etc/localtime:/etc/localtime:ro"
       - "Path/youwant/to/bindtoo/Config:/Config:ro"
       - "Path/youwant/to/bindtoo/Logs:/Logs"
+      - "Path/youwant/to/bindtoo/Yourmodfolder:/RML" #This line can be removed if not using mods.
     restart: on-failure:5
