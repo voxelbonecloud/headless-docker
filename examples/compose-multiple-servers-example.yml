@@ -1,0 +1,41 @@
+services:
+  bredos-testserver:
+    container_name: bredos-testserver
+    image: ghcr.io/voxelbonecloud/headless-docker:main 
+    env_file: .env
+    environment:
+      CONFIG_FILE: bredo.json
+      ENABLE_MODS: false
+      # ADDITIONAL_ARGUMENTS:
+    tty: true
+    stdin_open: true
+    user: "1000:1000"
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - "Headless_Configs:/Config:ro"
+      - "Headless_Logs_bredo:/Logs"
+      # - "RML:/RML"
+    restart: on-failure:5
+  public-worlds-au:
+    container_name: public-worlds-au
+    image: ghcr.io/voxelbonecloud/headless-docker:main 
+    env_file: .env
+    environment:
+      CONFIG_FILE: Public-AU-Config.json
+      ENABLE_MODS: true
+      # ADDITIONAL_ARGUMENTS:
+    tty: true
+    stdin_open: true
+    user: "1000:1000"
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - "Headless_Configs:/Config:ro"
+      - "Headless_Logs_PublicAU:/Logs"
+      - "RML:/RML"
+    restart: on-failure:5
+volumes:
+  Headless_Configs:
+  Headless_Logs_bredo:
+  Headless_Logs_PublicAU:
+  RML:
+

@@ -5,13 +5,23 @@ services:
     env_file: .env
     environment:
       CONFIG_FILE: Config.json
-      ADDITIONAL_ARGUMENTS: -LoadAssembly "/home/container/Headless/Libraries/ResoniteModLoader.dll"
+      ENABLE_MODS: false
+      # ADDITIONAL_ARGUMENTS:
     tty: true
     stdin_open: true
     user: "1000:1000"
     volumes:
       - "/etc/localtime:/etc/localtime:ro"
-      - "Path/youwant/to/bindtoo/Config:/Config:ro"
-      - "Path/youwant/to/bindtoo/Logs:/Logs"
-      - "Path/youwant/to/bindtoo:/home/container"
+      - "Headless_Configs:/Config:ro"
+      - "Headless_Logs:/Logs"
+      - "RML:/RML"
     restart: on-failure:5
+    deploy:
+      resources:
+        limits:
+          cpus: '16'
+          memory: 32G
+volumes:
+  Headless_Configs:
+  Headless_Logs:
+  RML:

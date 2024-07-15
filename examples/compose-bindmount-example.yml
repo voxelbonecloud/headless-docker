@@ -5,12 +5,14 @@ services:
     env_file: .env
     environment:
       CONFIG_FILE: Config.json
-      #ADDITIONAL_ARGUMENTS:
+      ENABLE_MODS: false
+      # ADDITIONAL_ARGUMENTS:
     tty: true
     stdin_open: true
     user: "1000:1000"
     volumes:
       - "/etc/localtime:/etc/localtime:ro"
-      - "Path/youwant/to/bindtoo/Config:/Config:ro"
-      - "Path/youwant/to/bindtoo/Logs:/Logs"
+      - "/path/to/Config:/Config:ro"
+      - "/path/to/Logs:/Logs"
+      - "/path/to/RML:/RML" # This line can be removed if not using mods.
     restart: on-failure:5

@@ -4,12 +4,13 @@ services:
     image: ghcr.io/voxelbonecloud/headless-docker:main 
     environment:
       CONFIG_FILE: Config.json
-      #ADDITIONAL_ARGUMENTS:
+      # ADDITIONAL_ARGUMENTS:
       STEAM_USER: YourSteamUsername
       STEAM_PASS: YourSteamPassword
       BETA_CODE: SteamBetaCode
       STEAM_BRANCH: headless
       LOG_RETENTION: 30
+      ENABLE_MODS: false
     tty: true
     stdin_open: true
     user: "1000:1000"
@@ -17,7 +18,9 @@ services:
       - "/etc/localtime:/etc/localtime:ro"
       - "Headless_Configs:/Config:ro"
       - "Headless_Logs:/Logs"
+      - "RML:/RML"
     restart: on-failure:5
 volumes:
   Headless_Configs:
   Headless_Logs:
+  RML:
