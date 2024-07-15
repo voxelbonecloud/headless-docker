@@ -2,23 +2,25 @@
 
 # Resonite Headless 
 
-Docker image based on Debian Bookworm Slim image with dotnet8 for hosting Resonite Headless servers. Supports automatic mod support.
+Docker image based on Debian Bookworm Slim image with dotnet8 for hosting Resonite Headless servers. Supports automatic modding of the Headless.
 
-You can find examples for [Portainer deployments Here](portainer/)
+You can find examples for Portainer deployments in the [Portainer folder](portainer/)
 
 ## Before you start
-You will require a steam beta code to gain access to the headless software. 
-This can be done in game by sending `/headlessCode` to the Resonite bot in-game.
-You will need a spare steam account that has Steam Guard disabled to run and download the server files.
-You will need a config.json file for the headless to load. Examples for Resonite Headless config files can be found on the [Official Wiki](https://wiki.resonite.com/Headless_Server_Software/Configuration_File#Example_Files)
+
+You will require a Steam beta code to gain access to the headless software.
+
+This can be done in game by sending `/headlessCode` to the Resonite bot in-game. Currently to get access to the Headless server software you need to be a Resonite Patron at the "Discoverer" tier or above.
+
+It is recommended to use a seperate Steam account with Steam Guard disabled to download the Headless software
+
+You will need a config file for the headless to load. Examples for Resonite Headless config files can be found on the [Resonite Wiki](https://wiki.resonite.com/Headless_Server_Software/Configuration_File#Example_Files)
 
 ## Example Compose file
 The following compose file uses stack wide environmental variables to set common values that may be used across multiple headless servers in the one stack. This allows adjusting config files for individual servers but reuse for example steam credentials for downloading server files.
 
 For a version of the compose file not using the .env file then use [compose-noenv-example.yml](examples/compose-noenv-example.yml)
 or check the [example list](examples/examples.md) we have for different requirements you may want.
-
-Example Compose file
 
 ```
 services:
@@ -29,7 +31,7 @@ services:
     environment:
       CONFIG_FILE: Config.json
       ENABLE_MODS: false
-      #ADDITIONAL_ARGUMENTS:
+      # ADDITIONAL_ARGUMENTS:
     tty: true
     stdin_open: true
     user: "1000:1000"
@@ -37,41 +39,53 @@ services:
       - "/etc/localtime:/etc/localtime:ro"
       - "Headless_Configs:/Config:ro"
       - "Headless_Logs:/Logs"
-      - "RML:/RML"
+      # - "RML:/RML"
     restart: on-failure:5
 volumes:
   Headless_Configs:
   Headless_Logs:
-  RML:
+  # RML:
 ```
 
-## Environmental Variables
-Latest Environmental Variables can be found in [example.env](example.env)
-Otherwise example below. 
+## Environment Variables
 
-    STEAM_USER="YourSteamUsername"
-    STEAM_PASS="YourSteamPassword"
-    BETA_CODE="SteamBetaCode"
-    STEAM_BRANCH="headless"
-    LOG_RETENTION="30"
+The environment variables supported by this can be found in [example.env](example.env). Otherwise, they can be found below:
+
+```
+STEAM_USER="YourSteamUsername"
+STEAM_PASS="YourSteamPassword"
+BETA_CODE="SteamBetaCode"
+STEAM_BRANCH="headless"
+LOG_RETENTION="30"
+```
+
 LOG_RETENTION will default to 30 days if left unset or removed.
 
-Additional variables are 
+```
+CONFIG_FILE="Config.json"
+ADDITIONAL_ARGUMENTS=""
+ENABLE_MODS="false"
+```
 
-    CONFIG_FILE="Config.json"
-    ADDITIONAL_ARGUMENTS=""
-    ENABLE_MODS="false"
-    
-   However by default these three are defined inside the compose file itself so they can be adjusted on a per-headless basis instead of an entire stack. This allows you to for example mix and match modded and unmodded servers within the same stack. An example of that is [compose-multiple-servers-example.yml](examples/compose-multiple-servers-example.yml). If you prefer and this is not required you can move these over to the stack wide variables. 
+By default, these are defined inside the container itself so they can be adjusted on a per-headless basis instead of on the entire stack.
+
+This allows for you to mix and match unmodded servers within the same stack - an example of this can be found in [compose-multiple-servers-example.yml](examples/compose-multiple-servers-example.yml)
+
+If you prefer, these can be moved to being stack wide variables in `.env`
 
 ## Important notes
-To use ports configured with force_port they must be published in the container too. [compose-forceport-example.yml](examples/compose-forceport-example.yml) shows an example on how to publish ports.
+To use ports configured with `forcePort` in the Resonite configuration, they must also be published by the Docker container. [compose-forceport-example.yml](examples/compose-forceport-example.yml) shows an example on how to publish ports.
 
-This image by default stores the Config files and logs in named volumes that persist between container restarts/recreation. The cache and database are automatically cleared every restart of the headless or container. 
+By default, this image stores the Config files and logs in named volumes that persist between container restarts/recreation. 
+
+The cache and database are automatically cleared every time either the headless or container are restarted, in order to keep disk usage down. 
+
 If you prefer to bind all the locations to a location on the host for easy management then use something like [compose-bindmount-example.yml](examples/compose-bindmount-example.yml)
 
-By default containers have no resource limits and will consume as much cpu and memory as needed. If you would like to set limits refer too [compose-resourcelimits-example.yml](examples/compose-resourcelimits-example.yml)
+By default containers have no resource limits and will consume as much cpu and memory as needed. If you would like to set limits, refer to [compose-resourcelimits-example.yml](examples/compose-resourcelimits-example.yml)
 
 ## Enabling Mods
 
-To enable mods, change the variable ENABLE_MODS to true. Copy your mod files into the corresponding folders inside the RML volume [Read our Modding section for more info and how to use](modding)
+To enable mods, change the environment variable `ENABLE_MODS` to true. 
+
+Copy your mod files into the corresponding folders inside the RML volume. Read our [Modding section](modding) for more info and how to use
