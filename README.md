@@ -61,5 +61,4 @@ Additional variables are
 This image by default stores the Config files and logs in named volumes that persist between container restarts/recreation. The cache and database are automatically cleared every restart of the headless or container. 
 If you prefer to bind all the locations to a location on the host for easy management then use something like [compose-bindmount-example.yml](examples/compose-bindmount-example.yml)
 
-The installation of the headless inside the container is wiped every time the container is deleted or updated so you can start fresh with a new container.
-However if you are wanting to mod your headless server this behavior is not ideal. [Please read the modding section to change this.](modding)
+Modding is currently WIP [Please Read our Modding Section](modding)
