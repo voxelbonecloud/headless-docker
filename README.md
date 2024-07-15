@@ -39,12 +39,12 @@ services:
       - "/etc/localtime:/etc/localtime:ro"
       - "Headless_Configs:/Config:ro"
       - "Headless_Logs:/Logs"
-      # - "RML:/RML"
+      # - "RML:/RML" # Uncomment if using mods
     restart: on-failure:5
 volumes:
   Headless_Configs:
   Headless_Logs:
-  # RML:
+  # RML: # Uncomment if using mods
 ```
 
 ## Environment Variables
