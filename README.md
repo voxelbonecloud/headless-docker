@@ -16,6 +16,7 @@ You will need a config.json file for the headless to load. Examples for Resonite
 The following compose file uses stack wide environmental variables to set common values that may be used across multiple headless servers in the one stack. This allows adjusting config files for individual servers but reuse for example steam credentials for downloading server files.
 
 For a version of the compose file not using the .env file then use [compose-noenv-example.yml](examples/compose-noenv-example.yml)
+or check the [example list](examples/examples.md) we have for different requirements you may want.
 
 Example Compose file
 
@@ -64,8 +65,12 @@ Additional variables are
    However by default these three are defined inside the compose file itself so they can be adjusted on a per-headless basis instead of an entire stack. This allows you to for example mix and match modded and unmodded servers within the same stack. An example of that is [compose-multiple-servers-example.yml](examples/compose-multiple-servers-example.yml). If you prefer and this is not required you can move these over to the stack wide variables. 
 
 ## Important notes
+To use ports configured with force_port they must be published in the container too. [compose-forceport-example.yml](examples/compose-forceport-example.yml) shows an example on how to publish ports.
+
 This image by default stores the Config files and logs in named volumes that persist between container restarts/recreation. The cache and database are automatically cleared every restart of the headless or container. 
 If you prefer to bind all the locations to a location on the host for easy management then use something like [compose-bindmount-example.yml](examples/compose-bindmount-example.yml)
+
+By default containers have no resource limits and will consume as much cpu and memory as needed. If you would like to set limits refer too [compose-resourcelimits-example.yml](examples/compose-resourcelimits-example.yml)
 
 ## Enabling Mods
 
