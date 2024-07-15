@@ -5,7 +5,7 @@ services:
     env_file: stack.env
     environment:
       CONFIG_FILE: Config.json
-      #ADDITIONAL_ARGUMENTS:
+      # ADDITIONAL_ARGUMENTS:
     tty: true
     stdin_open: true
     user: "1000:1000"
