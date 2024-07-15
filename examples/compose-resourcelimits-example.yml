@@ -6,7 +6,7 @@ services:
     environment:
       CONFIG_FILE: Config.json
       ENABLE_MODS: false
-      #ADDITIONAL_ARGUMENTS:
+      # ADDITIONAL_ARGUMENTS:
     tty: true
     stdin_open: true
     user: "1000:1000"

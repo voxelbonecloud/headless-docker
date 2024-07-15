@@ -6,7 +6,7 @@ services:
     environment:
       CONFIG_FILE: Config.json
       ENABLE_MODS: false
-      #ADDITIONAL_ARGUMENTS:
+      # ADDITIONAL_ARGUMENTS:
     tty: true
     stdin_open: true
     user: "1000:1000"
@@ -17,8 +17,7 @@ services:
       - "RML:/RML"
     restart: on-failure:5
     ports:
-      - 42070:42070/tcp #Must match the force port specified in your config file. Add additional as required
-      - 42070:42070/udp #Must match the force port specified in your config file. Add additional as required
+      - 42070:42070/udp # Must match the force port specified in your config file. Add additional as required
 volumes:
   Headless_Configs:
   Headless_Logs:
