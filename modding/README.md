@@ -1,6 +1,6 @@
 # Modding Resonite Headless Container
 
-## NOTE: As of writing this mods are currently broken under dotnet8
+## NOTE: Currently WIP and beung automated
 
 To mod the headless some changes need to be made to the default compose file. 
 
