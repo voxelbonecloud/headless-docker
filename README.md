@@ -37,7 +37,7 @@ services:
     user: "1000:1000"
     volumes:
       - "/etc/localtime:/etc/localtime:ro"
-      - "Headless_Configs:/Config:ro"
+      - "Headless_Configs:/Config"
       - "Headless_Logs:/Logs"
       # - "RML:/RML" # Uncomment if using mods
     restart: on-failure:5
