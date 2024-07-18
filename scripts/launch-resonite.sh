@@ -7,7 +7,7 @@ find /Logs -type f -name *.log -atime +${LOG_RETENTION:-30} -delete
 cd /home/container/Headless/net8.0
 
 if [ "${ENABLE_MODS}" = "true" ]; then
-	dotnet Resonite.dll -HeadlessConfig /Config/${CONFIG_FILE} -Logs /Logs/ -LoadAssembly Libraries/ResoniteModLoader.dll ${ADDITIONAL_ARGUMENTS}
+	exec dotnet Resonite.dll -HeadlessConfig /Config/${CONFIG_FILE} -Logs /Logs/ -LoadAssembly Libraries/ResoniteModLoader.dll ${ADDITIONAL_ARGUMENTS}
 else
-	dotnet Resonite.dll -HeadlessConfig /Config/${CONFIG_FILE} -Logs /Logs/ ${ADDITIONAL_ARGUMENTS}
+	exec dotnet Resonite.dll -HeadlessConfig /Config/${CONFIG_FILE} -Logs /Logs/ ${ADDITIONAL_ARGUMENTS}
 fi

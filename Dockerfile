@@ -7,6 +7,10 @@ RUN	apt update \
 	&& apt install curl lib32gcc-s1 libfreetype6 -y \
 	&& useradd -m -d /home/container -s /bin/bash container
 
+COPY	./scripts /scripts
+
+RUN	chmod +x /scripts/*
+
 RUN	mkdir /Logs \
 	&& chown -R container:container /Logs
 
@@ -21,6 +25,7 @@ ENV	DEBIAN_FRONTEND=noninteractive
 
 WORKDIR	/home/container
 
-COPY	./entrypoint.sh /entrypoint.sh
-COPY	./scripts /scripts
-CMD	[ "/bin/bash", "/entrypoint.sh" ]
+STOPSIGNAL SIGINT
+
+ENTRYPOINT ["/scripts/update-resonite.sh"]
+CMD ["/scripts/launch-resonite.sh"]
