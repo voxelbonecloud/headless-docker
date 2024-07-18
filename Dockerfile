@@ -24,6 +24,8 @@ WORKDIR	/home/container
 COPY	./entrypoint.sh /entrypoint.sh
 COPY	./scripts /scripts
 
+RUN	chmod +x /entrypoint.sh
+
 STOPSIGNAL SIGINT
 
-CMD	[ "/bin/bash", "/entrypoint.sh" ]
+ENTRYPOINT ["/entrypoint.sh"]
