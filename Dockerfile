@@ -23,4 +23,7 @@ WORKDIR	/home/container
 
 COPY	./entrypoint.sh /entrypoint.sh
 COPY	./scripts /scripts
+
+STOPSIGNAL SIGINT
+
 CMD	[ "/bin/bash", "/entrypoint.sh" ]
