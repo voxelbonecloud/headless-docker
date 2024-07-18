@@ -7,6 +7,11 @@ RUN	apt update \
 	&& apt install curl lib32gcc-s1 libfreetype6 -y \
 	&& useradd -m -d /home/container -s /bin/bash container
 
+COPY	./entrypoint.sh /entrypoint.sh
+COPY	./scripts /scripts
+
+RUN	chmod +x /entrypoint.sh
+
 RUN	mkdir /Logs \
 	&& chown -R container:container /Logs
 
@@ -20,11 +25,6 @@ ENV	HOME=/home/container
 ENV	DEBIAN_FRONTEND=noninteractive
 
 WORKDIR	/home/container
-
-COPY	./entrypoint.sh /entrypoint.sh
-COPY	./scripts /scripts
-
-RUN	chmod +x /entrypoint.sh
 
 STOPSIGNAL SIGINT
 
