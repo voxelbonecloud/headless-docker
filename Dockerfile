@@ -7,10 +7,9 @@ RUN	apt update \
 	&& apt install curl lib32gcc-s1 libfreetype6 -y \
 	&& useradd -m -d /home/container -s /bin/bash container
 
-COPY	./entrypoint.sh /entrypoint.sh
 COPY	./scripts /scripts
 
-RUN	chmod +x /entrypoint.sh
+RUN	chmod +x /scripts/*
 
 RUN	mkdir /Logs \
 	&& chown -R container:container /Logs
@@ -28,4 +27,5 @@ WORKDIR	/home/container
 
 STOPSIGNAL SIGINT
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/scripts/update-resonite.sh"]
+CMD ["/scripts/launch-resonite.sh"]

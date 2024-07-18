@@ -1,5 +1,12 @@
 #!/bin/sh
 
+if [ ! -d "/home/container/steamcmd" ]; then
+	echo Installing steamcmd
+	mkdir -p /home/container/steamcmd
+	curl -sSL -o /tmp/steamcmd.tar.gz https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz
+	tar -xf /tmp/steamcmd.tar.gz --directory /home/container/steamcmd
+fi
+
 HEADLESS_DIRECTORY="/home/container/Headless/net8.0"
 
 /home/container/steamcmd/steamcmd.sh +login ${STEAM_USER} ${STEAM_PASS} +force_install_dir /home/container +app_update 2519830 -beta ${STEAM_BRANCH} -betapassword ${BETA_CODE} +quit
@@ -23,3 +30,5 @@ if [ "${ENABLE_MODS}" = "true" ]; then
   curl -SslL https://github.com/resonite-modding-group/ResoniteModLoader/releases/latest/download/ResoniteModLoader.dll -o ${HEADLESS_DIRECTORY}/Libraries/ResoniteModLoader.dll
 
 fi
+
+exec $*
