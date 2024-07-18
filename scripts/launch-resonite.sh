@@ -1,7 +1,5 @@
 #!/bin/sh
 
-echo FUCK!
-
 rm -r /home/container/Headless/Data
 rm -r /home/container/Headless/Cache
 find /Logs -type f -name *.log -atime +${LOG_RETENTION:-30} -delete
