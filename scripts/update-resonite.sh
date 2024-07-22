@@ -13,6 +13,7 @@ HEADLESS_DIRECTORY="/home/container/Headless/net8.0"
 
 #Mod installation if ENABLE_MODS is true. Heavily inspired and pulled from work by Spex. Thank you
 if [ "${ENABLE_MODS}" = "true" ]; then
+  echo "Modding Headless files"
 
   # Create Libraries directory for RML to live in
   mkdir -p ${HEADLESS_DIRECTORY}/Libraries
@@ -40,17 +41,21 @@ if [ "${ENABLE_GITPULL_CONFIG}" = "true" ] || ["${ENABLE_GITPULL_MODS}" = "true"
     if [ -d ".git" ]; then
       # Pull Latest changes if repository already cloned
       git pull https://${REPO_ACCESS_TOKEN}:x-oauth-basic@${REPO_URL#https://}
+      echo "Repo has been pulled"
     else
       #If no existing files clone into staging directory. Keep the . at the end plz.
       git clone https://${REPO_ACCESS_TOKEN}:x-oauth-basic@${REPO_URL#https://} .
+      echo "Repo has been cloned"
     fi  
   else
     if [ -d ".git" ]; then
       # Pull Latest changes if repository already cloned
       git pull "${REPO_URL}"
+      echo "Repo has been pulled"
     else
       #If no existing files clone into staging directory
       git clone "${REPO_URL}" .
+      echo "Repo has been cloned"
     fi
   fi
 fi
@@ -61,10 +66,12 @@ if [ "${KEEP_IN_SYNC}" = "true" ]; then
   rm -r /Config/*
   rm -r ${HEADLESS_DIRECTORY}/rml_config/*
   rm -r ${HEADLESS_DIRECTORY}/rml_mods/*
+  echo "Deleted old files to stay in sync"
 fi
 #Copy Config files from git staging folder into /Config if ENABLE_GITPULL_CONFIG is true
 if [ "${ENABLE_GITPULL_CONFIG}" = "true" ]; then
   cp -r config/*.json /Config
+  echo "COnfig File copied from git staging folder"
 fi
 
 #Copy Mod files from git staging folder into correct folders if ENABLE_GITPULL_MODS is true and modding is enabled.
@@ -72,6 +79,7 @@ if [ "${ENABLE_GITPULL_MODS}" = "true" ] && [ "${ENABLE_MODS}" = "true" ]; then
   cp -r rml_mods/* ${HEADLESS_DIRECTORY}/rml_mods
   cp -r rml_config/* ${HEADLESS_DIRECTORY}/rml_config
   cp -r rml_libs/* ${HEADLESS_DIRECTORY}/rml_libs
+  echo "Mod files copied from git staging folder"
 fi
 
 exec $*
