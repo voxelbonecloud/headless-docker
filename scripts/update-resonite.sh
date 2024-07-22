@@ -31,4 +31,47 @@ if [ "${ENABLE_MODS}" = "true" ]; then
 
 fi
 
+#Pull github/git repository into staging folder if either ENABLE_GITPULL_CONFIG or ENABLE_GITPULL_MODS is set to true
+if [ "${ENABLE_GITPULL_CONFIG}" = "true" ] || ["${ENABLE_GITPULL_MODS}" = "true" ]; then
+  #Make the Staging folder for pulling down the repository
+  mkdir -p /home/container/gitstaging
+  cd /home/container/gitstaging
+  if [ "${REPO_IS_PRIVATE}" = "true" ]; then
+    if [ -d ".git" ]; then
+      # Pull Latest changes if repository already cloned
+      git pull https://${REPO_ACCESS_TOKEN}:x-oauth-basic@${REPO_URL#https://}
+    else
+      #If no existing files clone into staging directory. Keep the . at the end plz.
+      git clone https://${REPO_ACCESS_TOKEN}:x-oauth-basic@${REPO_URL#https://} .
+    fi  
+  else
+    if [ -d ".git" ]; then
+      # Pull Latest changes if repository already cloned
+      git pull "${REPO_URL}"
+    else
+      #If no existing files clone into staging directory
+      git clone "${REPO_URL}" .
+    fi
+  fi
+fi
+
+#If KEEP_IN_SYNC is true. The rml_mods, rml_config and the main /Config Folder will be wiped before coping the repo files. This ensures no additional files are added or kept.
+#For example if you manually added a config file directly. This would be removed so everything is in sync with the repo. 
+if [ "${KEEP_IN_SYNC}" = "true" ]; then
+  rm -r /Config/*
+  rm -r ${HEADLESS_DIRECTORY}/rml_config/*
+  rm -r ${HEADLESS_DIRECTORY}/rml_mods/*
+fi
+#Copy Config files from git staging folder into /Config if ENABLE_GITPULL_CONFIG is true
+if [ "${ENABLE_GITPULL_CONFIG}" = "true" ]; then
+  cp -r config/*.json /Config
+fi
+
+#Copy Mod files from git staging folder into correct folders if ENABLE_GITPULL_MODS is true and modding is enabled.
+if [ "${ENABLE_GITPULL_MODS}" = "true" ] && [ "${ENABLE_MODS}" = "true" ]; then
+  cp -r rml_mods/* ${HEADLESS_DIRECTORY}/rml_mods
+  cp -r rml_config/* ${HEADLESS_DIRECTORY}/rml_config
+  cp -r rml_libs/* ${HEADLESS_DIRECTORY}/rml_libs
+fi
+
 exec $*
