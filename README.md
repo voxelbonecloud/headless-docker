@@ -51,11 +51,15 @@ volumes:
 
 The environment variables supported by this can be found in [example.env](example.env). Otherwise, they can be found below:
 
+Required variables
 ```
 STEAM_USER="YourSteamUsername"
 STEAM_PASS="YourSteamPassword"
 BETA_CODE="SteamBetaCode"
 STEAM_BRANCH="headless"
+```
+Optional variables
+```
 LOG_RETENTION="30"
 ENABLE_GITPULL_CONFIG="false"
 ENABLE_GITPULL_MODS="false"
@@ -67,7 +71,6 @@ KEEP_IN_SYNC="false"
 
 LOG_RETENTION will default to 30 days if left unset or removed.
 
-Values with a default of "false" or related to repos can also be omitted if preferred when not in use.
 
 ```
 CONFIG_FILE="Config.json"
