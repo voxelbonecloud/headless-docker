@@ -7,7 +7,7 @@ if [ ! -d "/home/container/steamcmd" ]; then
 	tar -xf /tmp/steamcmd.tar.gz --directory /home/container/steamcmd
 fi
 
-HEADLESS_DIRECTORY="/home/container/Headless/net8.0"
+HEADLESS_DIRECTORY="/home/container/Headless"
 
 /home/container/steamcmd/steamcmd.sh +login ${STEAM_USER} ${STEAM_PASS} +force_install_dir /home/container +app_update 2519830 -beta ${STEAM_BRANCH} -betapassword ${BETA_CODE} +quit
 
