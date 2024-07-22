@@ -1,10 +1,10 @@
 FROM	ghcr.io/voxelbonecloud/debian-dotnet:main	
 
 LABEL	author="Voxel Bone Cloud" maintainer="github@voxelbone.cloud"
-LABEL org.opencontainers.image.source https://github.com/voxelbonecloud/headless-docker
-LABEL org.opencontainers.image.description "Docker image based on Debian Bookworm Slim image with dotnet8 for hosting Resonite Headless servers. Supports automatic modding of the Headless."
-LABEL org.opencontainers.image.licenses MIT-0
-LABEL org.opencontainers.image.authors "Voxel Bone Cloud"
+LABEL org.opencontainers.image.source=https://github.com/voxelbonecloud/headless-docker
+LABEL org.opencontainers.image.description="Docker image based on Debian Bookworm Slim image with dotnet8 for hosting Resonite Headless servers. Supports automatic modding of the Headless."
+LABEL org.opencontainers.image.licenses=MIT-0
+LABEL org.opencontainers.image.authors="Voxel Bone Cloud"
 
 RUN	apt update \
 	&& dpkg --add-architecture i386 \
