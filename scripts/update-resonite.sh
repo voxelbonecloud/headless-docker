@@ -71,7 +71,7 @@ fi
 #Copy Config files from git staging folder into /Config if ENABLE_GITPULL_CONFIG is true
 if [ "${ENABLE_GITPULL_CONFIG}" = "true" ]; then
   cp -r config/*.json /Config
-  echo "COnfig File copied from git staging folder"
+  echo "Config File copied from git staging folder"
 fi
 
 #Copy Mod files from git staging folder into correct folders if ENABLE_GITPULL_MODS is true and modding is enabled.
