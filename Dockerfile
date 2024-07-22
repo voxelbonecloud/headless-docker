@@ -8,7 +8,7 @@ LABEL org.opencontainers.image.authors "Voxel Bone Cloud"
 
 RUN	apt update \
 	&& dpkg --add-architecture i386 \
-	&& apt install curl lib32gcc-s1 libfreetype6 -y \
+	&& apt install curl git lib32gcc-s1 libfreetype6 -y \
 	&& useradd -m -d /home/container -s /bin/bash container
 
 COPY	./scripts /scripts
