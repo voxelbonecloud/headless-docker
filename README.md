@@ -67,7 +67,7 @@ KEEP_IN_SYNC="false"
 
 LOG_RETENTION will default to 30 days if left unset or removed.
 
-Values with a default of "false" can also be omitted if preferred.
+Values with a default of "false" or related to repos can also be omitted if preferred when not in use.
 
 ```
 CONFIG_FILE="Config.json"
