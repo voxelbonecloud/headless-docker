@@ -2,7 +2,7 @@
 
 # Resonite Headless 
 
-Docker image based on Debian Bookworm Slim image with dotnet8 for hosting Resonite Headless servers. Supports automatic modding of the Headless.
+Docker image based on Debian Bookworm Slim image with dotnet8 for hosting Resonite Headless servers. Supports automatic modding of the Headless and updating config and mod files from git repos.
 
 You can find examples for Portainer deployments in the [Portainer folder](portainer/)
 
@@ -51,15 +51,27 @@ volumes:
 
 The environment variables supported by this can be found in [example.env](example.env). Otherwise, they can be found below:
 
+Required variables
 ```
 STEAM_USER="YourSteamUsername"
 STEAM_PASS="YourSteamPassword"
 BETA_CODE="SteamBetaCode"
 STEAM_BRANCH="headless"
+```
+Optional variables
+```
 LOG_RETENTION="30"
+ENABLE_GIT_CONFIG="false"
+ENABLE_GIT_MODS="false"
+GIT_URL="URL"
+GIT_REPOSITORY_PRIVATE="false"
+GIT_USERNAME="username"
+GIT_ACCESS_TOKEN="ACCESS-TOKEN"
+KEEP_IN_SYNC="false"
 ```
 
 LOG_RETENTION will default to 30 days if left unset or removed.
+
 
 ```
 CONFIG_FILE="Config.json"
@@ -89,3 +101,10 @@ By default containers have no resource limits and will consume as much cpu and m
 To enable mods, change the environment variable `ENABLE_MODS` to true. 
 
 Copy your mod files into the corresponding folders inside the RML volume. Read our [Modding section](modding) for more info and how to use
+
+## Enable Repo Sync
+On startup this headless can be configured to pull new or updated config files and mod files from Public/Private Git repos such as github. This allows you to move compose files around to different hosts easily, or quickly scale up additional headless with set configs or mods.
+
+Additionally it allows easy tracking of changes and potentially make multi user access easier depending on your setup. The Headless just needs to be restarted for changes to be pulled down.
+
+To configure this please visit the example template repo [found here](https://github.com/sveken/Headless-repo-template)
