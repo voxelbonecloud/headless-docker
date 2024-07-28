@@ -40,11 +40,11 @@ if [ "${ENABLE_GITPULL_CONFIG}" = "true" ] || ["${ENABLE_GITPULL_MODS}" = "true"
   if [ "${REPO_IS_PRIVATE}" = "true" ]; then
     if [ -d ".git" ]; then
       # Pull Latest changes if repository already cloned
-      git pull https://${REPO_ACCESS_TOKEN}:x-oauth-basic@${REPO_URL#https://}
+      git pull https://${REPO_USERNAME}:${REPO_ACCESS_TOKEN}@${REPO_URL#https://}
       echo "Repo has been pulled"
     else
       #If no existing files clone into staging directory. Keep the . at the end plz.
-      git clone https://${REPO_ACCESS_TOKEN}:x-oauth-basic@${REPO_URL#https://} .
+      git clone https://${REPO_USERNAME}:${REPO_ACCESS_TOKEN}@${REPO_URL#https://} .
       echo "Repo has been cloned"
     fi  
   else
