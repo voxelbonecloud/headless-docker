@@ -32,8 +32,8 @@ if [ "${ENABLE_MODS}" = "true" ]; then
 
 fi
 
-#Pull github/git repository into staging folder if either ENABLE_GITPULL_CONFIG or ENABLE_GITPULL_MODS is set to true
-if [ "${ENABLE_GITPULL_CONFIG}" = "true" ] || ["${ENABLE_GITPULL_MODS}" = "true" ]; then
+#Pull github/git repository into staging folder if either ENABLE_GIT_CONFIG or ENABLE_GIT_MODS is set to true
+if [ "${ENABLE_GIT_CONFIG}" = "true" ] || ["${ENABLE_GIT_MODS}" = "true" ]; then
   #Make the Staging folder for pulling down the repository
   mkdir -p /home/container/gitstaging
   cd /home/container/gitstaging
@@ -68,14 +68,14 @@ if [ "${KEEP_IN_SYNC}" = "true" ]; then
   rm -r ${HEADLESS_DIRECTORY}/rml_mods/*
   echo "Deleted old files to stay in sync"
 fi
-#Copy Config files from git staging folder into /Config if ENABLE_GITPULL_CONFIG is true
-if [ "${ENABLE_GITPULL_CONFIG}" = "true" ]; then
+#Copy Config files from git staging folder into /Config if ENABLE_GIT_CONFIG is true
+if [ "${ENABLE_GIT_CONFIG}" = "true" ]; then
   cp -r config/*.json /Config
   echo "Config File copied from git staging folder"
 fi
 
 #Copy Mod files from git staging folder into correct folders if ENABLE_GITPULL_MODS is true and modding is enabled.
-if [ "${ENABLE_GITPULL_MODS}" = "true" ] && [ "${ENABLE_MODS}" = "true" ]; then
+if [ "${ENABLE_GIT_MODS}" = "true" ] && [ "${ENABLE_MODS}" = "true" ]; then
   cp -r rml_mods/* ${HEADLESS_DIRECTORY}/rml_mods
   cp -r rml_config/* ${HEADLESS_DIRECTORY}/rml_config
   cp -r rml_libs/* ${HEADLESS_DIRECTORY}/rml_libs
