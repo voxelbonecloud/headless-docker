@@ -37,24 +37,24 @@ if [ "${ENABLE_GITPULL_CONFIG}" = "true" ] || ["${ENABLE_GITPULL_MODS}" = "true"
   #Make the Staging folder for pulling down the repository
   mkdir -p /home/container/gitstaging
   cd /home/container/gitstaging
-  if [ "${REPO_IS_PRIVATE}" = "true" ]; then
+  if [ "${GIT_REPOSITORY_PRIVATE}" = "true" ]; then
     if [ -d ".git" ]; then
       # Pull Latest changes if repository already cloned
-      git pull https://${REPO_USERNAME}:${REPO_ACCESS_TOKEN}@${REPO_URL#https://}
+      git pull https://${GIT_USERNAME}:${GIT_ACCESS_TOKEN}@${GIT_URL#https://}
       echo "Repo has been pulled"
     else
       #If no existing files clone into staging directory. Keep the . at the end plz.
-      git clone https://${REPO_USERNAME}:${REPO_ACCESS_TOKEN}@${REPO_URL#https://} .
+      git clone https://${GIT_USERNAME}:${GIT_ACCESS_TOKEN}@${GIT_URL#https://} .
       echo "Repo has been cloned"
     fi  
   else
     if [ -d ".git" ]; then
       # Pull Latest changes if repository already cloned
-      git pull "${REPO_URL}"
+      git pull "${GIT_URL}"
       echo "Repo has been pulled"
     else
       #If no existing files clone into staging directory
-      git clone "${REPO_URL}" .
+      git clone "${GIT_URL}" .
       echo "Repo has been cloned"
     fi
   fi
