@@ -74,7 +74,7 @@ if [ "${ENABLE_GIT_CONFIG}" = "true" ]; then
   echo "Config File copied from git staging folder"
 fi
 
-#Copy Mod files from git staging folder into correct folders if ENABLE_GITPULL_MODS is true and modding is enabled.
+#Copy Mod files from git staging folder into correct folders if ENABLE_GIT_MODS is true and modding is enabled.
 if [ "${ENABLE_GIT_MODS}" = "true" ] && [ "${ENABLE_MODS}" = "true" ]; then
   cp -r rml_mods/* ${HEADLESS_DIRECTORY}/rml_mods
   cp -r rml_config/* ${HEADLESS_DIRECTORY}/rml_config
