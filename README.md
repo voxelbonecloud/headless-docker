@@ -102,7 +102,7 @@ To enable mods, change the environment variable `ENABLE_MODS` to true.
 
 Copy your mod files into the corresponding folders inside the RML volume. Read our [Modding section](modding) for more info and how to use
 
-## Enable Repo Sync
+## Enable Git Sync
 On startup this headless can be configured to pull new or updated config files and mod files from Public/Private Git repos such as github. This allows you to move compose files around to different hosts easily, or quickly scale up additional headless with set configs or mods.
 
 Additionally it allows easy tracking of changes and potentially make multi user access easier depending on your setup. The Headless just needs to be restarted for changes to be pulled down.
