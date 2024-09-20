@@ -20,6 +20,6 @@ You can automatically install / update a selected few mods:
 - [StresslessHeadless](https://github.com/Raidriar796/StresslessHeadless)
 - [ResoniteIPv6Mod](https://github.com/bontebok/ResoniteIPv6Mod)
 
-This functionality can be enabled with the `ENABLE_AUTO_MOD_UPDATE` environment variable.
+This functionality can be enabled with the `ENABLE_AUTO_MOD_UPDATE` environment variable..
 
 The individual mods have environment variables to install them: `MOD_HeadlessTweaks`, `MOD_StresslessHeadless` and `MOD_ResoniteIPv6Mod`.
