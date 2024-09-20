@@ -33,6 +33,30 @@ if [ "${ENABLE_MODS}" = "true" ]; then
 
 fi
 
+# Install mods configured to be installed
+if [ "${ENABLE_AUTO_MOD_UPDATE}" = "true" ]; then
+  echo "Auto mod update is enabled. Downloading mods now"
+  
+  # HeadlessTweaks
+  if [ "${MOD_HeadlessTweaks}" = "true" ]; then
+    echo "Installing HeadlessTweaks"
+    curl -SslL https://github.com/New-Project-Final-Final-WIP/HeadlessTweaks/releases/latest/download/HeadlessTweaks.dll -o ${HEADLESS_DIRECTORY}/rml_mods/HeadlessTweaks.dll
+  fi
+
+  # StresslessHeadless
+  if [ "${MOD_StresslessHeadless}" = "true" ]; then
+    echo "Installing StresslessHeadless"
+    curl -SslL https://github.com/Raidriar796/StresslessHeadless/releases/download/1.3.1/StresslessHeadless.dll -o ${HEADLESS_DIRECTORY}/rml_mods/StresslessHeadless.dll
+  fi
+
+  # ResoniteIPv6Mod
+  if [ "${MOD_ResoniteIPv6Mod}" = "true" ]; then
+    echo "Installing ResoniteIPv6Mod"
+    curl -SslL https://github.com/bontebok/ResoniteIPv6Mod/releases/download/4.0.0/ResoniteIPv6Mod.dll -o ${HEADLESS_DIRECTORY}/rml_mods/ResoniteIPv6Mod.dll
+  fi
+
+fi
+
 #Pull github/git repository into staging folder if either ENABLE_GIT_CONFIG or ENABLE_GIT_MODS is set to true
 if [ "${ENABLE_GIT_CONFIG}" = "true" ] || ["${ENABLE_GIT_MODS}" = "true" ]; then
   #Make the Staging folder for pulling down the repository
