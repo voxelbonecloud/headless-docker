@@ -9,7 +9,7 @@ When ENABLE_MODS is set to true the following changes will happen each time the 
 Mods can be disabled and enabled as required by changing the variable.
 
 ## Using Mods
-To add mods copy your mod files to the correct folders to the location your RML folder is binded too. 
+To add mods copy your mod files to the correct folders to the location your RML folder is bound to. 
 
 The default location for persistent volumes is /var/lib/docker/volumes on Linux or if you used a host bind mount it is the location you specified on the host. Portainer also offers a basic inbuilt volume file manager
 
