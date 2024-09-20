@@ -1,4 +1,5 @@
 #!/bin/sh
+# vim: ts=2 sw=2 et
 
 if [ ! -d "/home/container/steamcmd" ]; then
 	echo Installing steamcmd
