@@ -12,3 +12,14 @@ Mods can be disabled and enabled as required by changing the variable.
 To add mods copy your mod files to the correct folders to the location your RML folder is binded too. 
 
 The default location for persistent volumes is /var/lib/docker/volumes on Linux or if you used a host bind mount it is the location you specified on the host. Portainer also offers a basic inbuilt volume file manager
+
+## Automatically updating mods
+You can automatically install / update a selected few mods:
+
+- [HeadlessTweaks](https://github.com/New-Project-Final-Final-WIP/HeadlessTweaks)
+- [StresslessHeadless](https://github.com/Raidriar796/StresslessHeadless)
+- [ResoniteIPv6Mod](https://github.com/bontebok/ResoniteIPv6Mod)
+
+This functionality can be enabled with the `ENABLE_AUTO_MOD_UPDATE` environment variable.
+
+The individual mods have environment variables to install them: `MOD_HeadlessTweaks`, `MOD_StresslessHeadless` and `MOD_ResoniteIPv6Mod`.
