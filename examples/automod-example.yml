@@ -1,0 +1,31 @@
+services:
+  headless:
+    container_name: resonite-headless
+    image: ghcr.io/voxelbonecloud/headless-docker:main 
+    network_mode: host
+    environment:
+      CONFIG_FILE: Config.json
+      STEAM_USER: YourSteamUsername
+      STEAM_PASS: YourSteamPassword
+      BETA_CODE: SteamBetaCode
+      STEAM_BRANCH: headless
+      LOG_RETENTION: 30
+      ENABLE_MODS: true
+      ENABLE_AUTO_MOD_UPDATE: true
+      MOD_HeadlessTweaks: true
+      MOD_StresslessHeadless: true
+      MOD_ResoniteIPv6Mod: true
+      #ADDITIONAL_ARGUMENTS:
+    tty: true
+    stdin_open: true
+    user: "1000:1000"
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - "Headless_Configs:/Config"
+      - "Headless_Logs:/Logs"
+      - "RML:/RML"
+    restart: on-failure:5
+volumes:
+  Headless_Configs:
+  Headless_Logs:
+  RML:
