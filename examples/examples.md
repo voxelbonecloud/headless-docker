@@ -11,6 +11,9 @@ Below are some example compose files to help with different hosting requirements
 
 [How to set a resource limit on a headless server in compose](compose-resourcelimits-example.yml)
 
+[How to use IPv6 and auto mod updates](automod-example.md)
+
 For modding info [Check the modding page](../modding/README.md)
+
 
 For Portainer info [Check the Portainer page](../portainer/README.md)

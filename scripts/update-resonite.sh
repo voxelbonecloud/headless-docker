@@ -1,4 +1,5 @@
 #!/bin/sh
+# vim: ts=2 sw=2 et
 
 if [ ! -d "/home/container/steamcmd" ]; then
 	echo Installing steamcmd
@@ -29,6 +30,30 @@ if [ "${ENABLE_MODS}" = "true" ]; then
   # Download RML and 0harmony
   curl -SslL https://github.com/resonite-modding-group/ResoniteModLoader/releases/latest/download/0Harmony-Net8.dll -o ${HEADLESS_DIRECTORY}/rml_libs/0Harmony-Net8.dll
   curl -SslL https://github.com/resonite-modding-group/ResoniteModLoader/releases/latest/download/ResoniteModLoader.dll -o ${HEADLESS_DIRECTORY}/Libraries/ResoniteModLoader.dll
+
+fi
+
+# Install mods configured to be installed
+if [ "${ENABLE_AUTO_MOD_UPDATE}" = "true" ]; then
+  echo "Auto mod update is enabled. Downloading mods now"
+  
+  # HeadlessTweaks
+  if [ "${MOD_HeadlessTweaks}" = "true" ]; then
+    echo "Installing HeadlessTweaks"
+    curl -SslL https://github.com/New-Project-Final-Final-WIP/HeadlessTweaks/releases/latest/download/HeadlessTweaks.dll -o ${HEADLESS_DIRECTORY}/rml_mods/HeadlessTweaks.dll
+  fi
+
+  # StresslessHeadless
+  if [ "${MOD_StresslessHeadless}" = "true" ]; then
+    echo "Installing StresslessHeadless"
+    curl -SslL https://github.com/Raidriar796/StresslessHeadless/releases/download/1.3.1/StresslessHeadless.dll -o ${HEADLESS_DIRECTORY}/rml_mods/StresslessHeadless.dll
+  fi
+
+  # ResoniteIPv6Mod
+  if [ "${MOD_ResoniteIPv6Mod}" = "true" ]; then
+    echo "Installing ResoniteIPv6Mod"
+    curl -SslL https://github.com/bontebok/ResoniteIPv6Mod/releases/download/4.0.0/ResoniteIPv6Mod.dll -o ${HEADLESS_DIRECTORY}/rml_mods/ResoniteIPv6Mod.dll
+  fi
 
 fi
 
