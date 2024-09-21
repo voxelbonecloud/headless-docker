@@ -42,4 +42,4 @@ volumes:
   RML:
 ```
 
-The above compose file can be found in in a ready to go yml here [automod-example.yml](automod-example.yml)
+The above compose file can be found in a ready to go yml here [automod-example.yml](automod-example.yml)
