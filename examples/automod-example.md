@@ -1,12 +1,12 @@
-# Auto Mod installation example with ipv6
+# Auto Mod installation example with IPv6
 This example will assume the following. 
 
-- IPV6 is working on the host.
+- IPv6 is working on the host.
 - You have Docker working and have a basic idea how to use it.
 
-This example will also move all the required environmental variables into the compose file. If you are going to host multiple servers in the same stack its recommended to keep using the environmental file for the beta code and steam credentials. 
+This example will also move all the required environment variables into the compose file. If you are going to host multiple servers in the same stack its recommended to keep using the environment file for the beta code and Steam credentials. 
 
-To get around not setting up IPV6 support in docker bridge networks we will be using host networking mode. This will allow resonite to bind to the host interface for opening ports and accepting traffic on the hosts ipv6 address directly.
+To get around not setting up IPv6 support in Docker bridge networks we will be using host networking mode. This will allow Resonite to bind to the host interface for opening ports and accept traffic on the hosts IPv6 address directly.
 
 ```
 services:
