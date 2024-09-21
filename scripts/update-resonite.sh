@@ -46,13 +46,19 @@ if [ "${ENABLE_AUTO_MOD_UPDATE}" = "true" ]; then
   # StresslessHeadless
   if [ "${MOD_StresslessHeadless}" = "true" ]; then
     echo "Installing StresslessHeadless"
-    curl -SslL https://github.com/Raidriar796/StresslessHeadless/releases/download/1.3.1/StresslessHeadless.dll -o ${HEADLESS_DIRECTORY}/rml_mods/StresslessHeadless.dll
+    curl -SslL https://github.com/Raidriar796/StresslessHeadless/releases/latest/download/StresslessHeadless.dll -o ${HEADLESS_DIRECTORY}/rml_mods/StresslessHeadless.dll
   fi
 
   # ResoniteIPv6Mod
   if [ "${MOD_ResoniteIPv6Mod}" = "true" ]; then
     echo "Installing ResoniteIPv6Mod"
-    curl -SslL https://github.com/bontebok/ResoniteIPv6Mod/releases/download/4.0.0/ResoniteIPv6Mod.dll -o ${HEADLESS_DIRECTORY}/rml_mods/ResoniteIPv6Mod.dll
+    curl -SslL https://github.com/bontebok/ResoniteIPv6Mod/releases/latest/download/ResoniteIPv6Mod.dll -o ${HEADLESS_DIRECTORY}/rml_mods/ResoniteIPv6Mod.dll
+  fi
+
+  # Headless Prometheus Exporter
+  if [ "${MOD_PrometheusExporter}" = "true" ]; then
+    echo "Installing Headless Prometheus Exporter"
+    curl -SslL  https://i.j4.lc/ShareX/2024/09/HeadlessPrometheusExporter.dll -o ${HEADLESS_DIRECTORY}/rml_mods/HeadlessPrometheusExporter.dll
   fi
 
 fi
