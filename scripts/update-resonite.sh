@@ -55,6 +55,12 @@ if [ "${ENABLE_AUTO_MOD_UPDATE}" = "true" ]; then
     curl -SslL https://github.com/bontebok/ResoniteIPv6Mod/releases/download/4.0.0/ResoniteIPv6Mod.dll -o ${HEADLESS_DIRECTORY}/rml_mods/ResoniteIPv6Mod.dll
   fi
 
+  # Headless Prometheus Exporter
+  if [ "${MOD_PrometheusExporter}" = "true"]; then
+    echo "Installing Headless Prometheus Exporter"
+    curl -SslL https://g.j4.lc/general-stuff/resonite/headless-prometheus-exporter/-/releases/1.0.6/downloads/HeadlessPrometheusExporter.dll -o ${HEADLESS_DIRECTORY}/rml_mods/HeadlessPrometheusExporter.dll
+  fi
+
 fi
 
 #Pull github/git repository into staging folder if either ENABLE_GIT_CONFIG or ENABLE_GIT_MODS is set to true
