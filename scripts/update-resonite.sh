@@ -58,7 +58,7 @@ if [ "${ENABLE_AUTO_MOD_UPDATE}" = "true" ]; then
   # Headless Prometheus Exporter
   if [ "${MOD_PrometheusExporter}" = "true" ]; then
     echo "Installing Headless Prometheus Exporter"
-    curl -SslL https://g.j4.lc/general-stuff/resonite/headless-prometheus-exporter/-/releases/1.0.6/downloads/HeadlessPrometheusExporter.dll -o ${HEADLESS_DIRECTORY}/rml_mods/HeadlessPrometheusExporter.dll
+    curl -SslL  https://i.j4.lc/ShareX/2024/09/HeadlessPrometheusExporter.dll -o ${HEADLESS_DIRECTORY}/rml_mods/HeadlessPrometheusExporter.dll
   fi
 
 fi
