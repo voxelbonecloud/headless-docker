@@ -51,7 +51,7 @@ volumes:
 
 The environment variables supported by this can be found in [example.env](example.env). Otherwise, they can be found below:
 
-Required variables
+Required variables - These are all that are required for a headless server
 ```
 STEAM_USER="YourSteamUsername"
 STEAM_PASS="YourSteamPassword"
