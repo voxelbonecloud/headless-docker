@@ -19,6 +19,15 @@ if [ "${ENABLE_MODS}" = "true" ]; then
   # Create Libraries directory for RML to live in
   mkdir -p ${HEADLESS_DIRECTORY}/Libraries
 
+  #If KEEP_IN_SYNC is true. The rml_mods, rml_config and the main /Config Folder will be wiped before coping the repo files. This ensures no additional files are added or kept.
+#For example if you manually added a config file directly. This would be removed so everything is in sync with the repo. 
+if [ "${KEEP_IN_SYNC}" = "true" ]; then
+  rm -r /Config/*
+  rm -r ${HEADLESS_DIRECTORY}/rml_config/*
+  rm -r ${HEADLESS_DIRECTORY}/rml_mods/*
+  echo "Deleted old files to stay in sync"
+fi
+
   # Create RML directories on RML volume, mods and config will be stored in here.  
   mkdir -p /RML/rml_mods /RML/rml_libs /RML/rml_config
   
@@ -91,14 +100,7 @@ if [ "${ENABLE_GIT_CONFIG}" = "true" ] || ["${ENABLE_GIT_MODS}" = "true" ]; then
   fi
 fi
 
-#If KEEP_IN_SYNC is true. The rml_mods, rml_config and the main /Config Folder will be wiped before coping the repo files. This ensures no additional files are added or kept.
-#For example if you manually added a config file directly. This would be removed so everything is in sync with the repo. 
-if [ "${KEEP_IN_SYNC}" = "true" ]; then
-  rm -r /Config/*
-  rm -r ${HEADLESS_DIRECTORY}/rml_config/*
-  rm -r ${HEADLESS_DIRECTORY}/rml_mods/*
-  echo "Deleted old files to stay in sync"
-fi
+
 #Copy Config files from git staging folder into /Config if ENABLE_GIT_CONFIG is true
 if [ "${ENABLE_GIT_CONFIG}" = "true" ]; then
   cp -r config/*.json /Config
