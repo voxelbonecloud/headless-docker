@@ -10,7 +10,7 @@ fi
 
 HEADLESS_DIRECTORY="/home/container/Headless"
 
-/home/container/steamcmd/steamcmd.sh +login ${STEAM_USER} ${STEAM_PASS} +force_install_dir /home/container +app_update 2519830 -beta ${STEAM_BRANCH} -betapassword ${BETA_CODE} +quit
+/home/container/steamcmd/steamcmd.sh +login ${STEAM_USER} ${STEAM_PASS} +force_install_dir /home/container +app_update 2519830 -beta ${STEAM_BRANCH} -betapassword ${BETA_CODE} validate +quit
 
 #Mod installation if ENABLE_MODS is true. Heavily inspired and pulled from work by Spex. Thank you
 if [ "${ENABLE_MODS}" = "true" ]; then
