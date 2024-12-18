@@ -37,7 +37,11 @@ fi
   ln -s /RML/rml_config ${HEADLESS_DIRECTORY}/rml_config
 
   # Download RML and 0harmony
-  curl -SslL https://github.com/resonite-modding-group/ResoniteModLoader/releases/latest/download/0Harmony-Net8.dll -o ${HEADLESS_DIRECTORY}/rml_libs/0Harmony-Net8.dll
+  #curl -SslL https://github.com/resonite-modding-group/ResoniteModLoader/releases/latest/download/0Harmony-Net8.dll -o ${HEADLESS_DIRECTORY}/rml_libs/0Harmony-Net8.dll
+
+  # Make sure we don't have the .net8 harmony
+  rm ${HEADLESS_DIRECTORY}/rml_libs/0Harmony-Net8.dll
+  curl -SslL https://github.com/stiefeljackal/pardeike.Harmony/releases/download/temp-release/0Harmony.dll -o ${HEADLESS_DIRECTORY}/rml_libs/0Harmony.dll
   curl -SslL https://github.com/resonite-modding-group/ResoniteModLoader/releases/latest/download/ResoniteModLoader.dll -o ${HEADLESS_DIRECTORY}/Libraries/ResoniteModLoader.dll
 
   # If automatic mod updating is enabled, download the requested mods
