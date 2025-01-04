@@ -6,6 +6,8 @@ Docker image based on Debian Bookworm Slim image with dotnet8 for hosting Resoni
 
 You can find examples for Portainer deployments in the [Portainer folder](portainer/)
 
+For a basic setup guide, follow [setup.md](setup.md)
+
 ## Before you start
 
 You will require a Steam beta code to gain access to the headless software.
