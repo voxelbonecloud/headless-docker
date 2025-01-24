@@ -10,7 +10,7 @@ fi
 
 HEADLESS_DIRECTORY="/home/container/Headless"
 
-/home/container/steamcmd/steamcmd.sh +login ${STEAM_USER} ${STEAM_PASS} +force_install_dir /home/container +app_update 2519830 -beta ${STEAM_BRANCH} -betapassword ${BETA_CODE} +quit
+/home/container/steamcmd/steamcmd.sh +login ${STEAM_USER} ${STEAM_PASS} +force_install_dir /home/container +app_update 2519830 -beta ${STEAM_BRANCH} -betapassword ${BETA_CODE} validate +quit
 
 #Mod installation if ENABLE_MODS is true. Heavily inspired and pulled from work by Spex. Thank you
 if [ "${ENABLE_MODS}" = "true" ]; then
@@ -38,7 +38,11 @@ if [ "${KEEP_IN_SYNC}" = "true" ]; then
 fi
 
   # Download RML and 0harmony
-  curl -SslL https://github.com/resonite-modding-group/ResoniteModLoader/releases/latest/download/0Harmony-Net8.dll -o ${HEADLESS_DIRECTORY}/rml_libs/0Harmony-Net8.dll
+  #curl -SslL https://github.com/resonite-modding-group/ResoniteModLoader/releases/latest/download/0Harmony-Net8.dll -o ${HEADLESS_DIRECTORY}/rml_libs/0Harmony-Net8.dll
+
+  # Make sure we don't have the .net8 harmony
+  rm ${HEADLESS_DIRECTORY}/rml_libs/0Harmony-Net8.dll
+  curl -SslL https://github.com/stiefeljackal/pardeike.Harmony/releases/download/temp-release/0Harmony.dll -o ${HEADLESS_DIRECTORY}/rml_libs/0Harmony.dll
   curl -SslL https://github.com/resonite-modding-group/ResoniteModLoader/releases/latest/download/ResoniteModLoader.dll -o ${HEADLESS_DIRECTORY}/Libraries/ResoniteModLoader.dll
 
   # If automatic mod updating is enabled, download the requested mods
