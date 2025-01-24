@@ -19,15 +19,6 @@ if [ "${ENABLE_MODS}" = "true" ]; then
   # Create Libraries directory for RML to live in
   mkdir -p ${HEADLESS_DIRECTORY}/Libraries
 
-  #If KEEP_IN_SYNC is true. The rml_mods, rml_config and the main /Config Folder will be wiped before coping the repo files. This ensures no additional files are added or kept.
-#For example if you manually added a config file directly. This would be removed so everything is in sync with the repo. 
-if [ "${KEEP_IN_SYNC}" = "true" ]; then
-  rm -r /Config/*
-  rm -r ${HEADLESS_DIRECTORY}/rml_config/*
-  rm -r ${HEADLESS_DIRECTORY}/rml_mods/*
-  echo "Deleted old files to stay in sync"
-fi
-
   # Create RML directories on RML volume, mods and config will be stored in here.  
   mkdir -p /RML/rml_mods /RML/rml_libs /RML/rml_config
   
@@ -35,6 +26,16 @@ fi
   ln -s /RML/rml_mods ${HEADLESS_DIRECTORY}/rml_mods
   ln -s /RML/rml_libs ${HEADLESS_DIRECTORY}/rml_libs
   ln -s /RML/rml_config ${HEADLESS_DIRECTORY}/rml_config
+
+    #If KEEP_IN_SYNC is true. The rml_mods, rml_config and the main /Config Folder will be wiped before coping the repo files. This ensures no additional files are added or kept.
+#For example if you manually added a config file directly. This would be removed so everything is in sync with the repo. 
+if [ "${KEEP_IN_SYNC}" = "true" ]; then
+  rm -r /Config/*
+  rm -r ${HEADLESS_DIRECTORY}/rml_config/*
+  rm -r ${HEADLESS_DIRECTORY}/rml_mods/*
+  rm -r ${HEADLESS_DIRECTORY}/rml_libs/*
+  echo "Deleted old files to stay in sync"
+fi
 
   # Download RML and 0harmony
   #curl -SslL https://github.com/resonite-modding-group/ResoniteModLoader/releases/latest/download/0Harmony-Net8.dll -o ${HEADLESS_DIRECTORY}/rml_libs/0Harmony-Net8.dll
