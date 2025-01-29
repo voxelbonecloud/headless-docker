@@ -12,7 +12,7 @@ To use the compose files for Portainer the main change is simply replacing the `
 services:
   headless:
     container_name: resonite-headless-dotnet8
-    image: ghcr.io/voxelbonecloud/headless-docker:main 
+    image: ghcr.io/voxelbonecloud/resonite-headless-docker:main 
     env_file: stack.env
     environment:
       CONFIG_FILE: Config.json
