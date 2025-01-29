@@ -1,7 +1,7 @@
 services:
   headless:
     container_name: resonite-headless
-    image: ghcr.io/voxelbonecloud/headless-docker:main 
+    image: ghcr.io/voxelbonecloud/resonite-headless-docker:main 
     network_mode: host
     environment:
       CONFIG_FILE: Config.json

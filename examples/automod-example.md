@@ -12,7 +12,7 @@ To get around not setting up IPv6 support in Docker bridge networks we will be u
 services:
   headless:
     container_name: resonite-headless
-    image: ghcr.io/voxelbonecloud/headless-docker:main 
+    image: ghcr.io/voxelbonecloud/resonite-headless-docker:main 
     network_mode: host
     environment:
       CONFIG_FILE: Config.json
