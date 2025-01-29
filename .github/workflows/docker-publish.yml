@@ -38,4 +38,6 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ghcr.io/${{ env.IMAGE_NAME }}:${{ github.ref_name }}
+          tags: |
+            ghcr.io/${{ env.IMAGE_NAME }}:${{ github.ref_name }}
+            ghcr.io/voxelbonecloud/headless-docker:${{ github.ref_name}}
