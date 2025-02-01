@@ -108,7 +108,7 @@ The Modding section also has information on how to enable auto mod installing fo
 - [StresslessHeadless](https://github.com/Raidriar796/StresslessHeadless)
 - [ResoniteIPv6Mod](https://github.com/bontebok/ResoniteIPv6Mod)
 - [Headless Prometheus Exporter](https://g.j4.lc/general-stuff/resonite/headless-prometheus-exporter)
-- [HeadlessUserCulling}](https://github.com/Raidriar796/HeadlessUserCulling)
+- [HeadlessUserCulling](https://github.com/Raidriar796/HeadlessUserCulling)
 
 ## Enable Git Sync
 On startup this headless can be configured to pull new or updated config files and mod files from Public/Private Git repos such as github. This allows you to move compose files around to different hosts easily, or quickly scale up additional headless with set configs or mods.
