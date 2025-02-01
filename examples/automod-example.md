@@ -26,6 +26,7 @@ services:
       MOD_HeadlessTweaks: true
       MOD_StresslessHeadless: true
       MOD_ResoniteIPv6Mod: true
+      MOD_HeadlessUserCulling: true
       #ADDITIONAL_ARGUMENTS:
     tty: true
     stdin_open: true

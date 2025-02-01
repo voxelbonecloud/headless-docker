@@ -21,10 +21,11 @@ You can automatically install / update a selected few mods:
 - [StresslessHeadless](https://github.com/Raidriar796/StresslessHeadless)
 - [ResoniteIPv6Mod](https://github.com/bontebok/ResoniteIPv6Mod)
 - [Headless Prometheus Exporter](https://g.j4.lc/general-stuff/resonite/headless-prometheus-exporter)
+- [HeadlessUserCulling](https://github.com/Raidriar796/HeadlessUserCulling)
 
 This functionality can be enabled with the `ENABLE_AUTO_MOD_UPDATE` environment variable.. Note `ENABLE_MODS` must also be `true`.
 
-The individual mods have environment variables to install them: `MOD_HeadlessTweaks`, `MOD_StresslessHeadless`, `MOD_PrometheusExporter` and `MOD_ResoniteIPv6Mod`.
+The individual mods have environment variables to install them: `MOD_HeadlessTweaks`, `MOD_StresslessHeadless`, `MOD_HeadlessUserCulling`, `MOD_PrometheusExporter` and `MOD_ResoniteIPv6Mod`.
 
 **Keep in mind some mods can change the default behavior of the server**
 

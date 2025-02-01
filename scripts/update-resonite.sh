@@ -73,6 +73,12 @@ fi
       curl -SslL https://i.j4.lc/resonite/mods/latest/HeadlessPrometheusExporter.dll -o ${HEADLESS_DIRECTORY}/rml_mods/HeadlessPrometheusExporter.dll
     fi
 
+    #HeadlessUserCulling
+    if [ "${MOD_HeadlessUserCulling}" = "true" ]; then
+      echo "Installing HeadlessUserCulling"
+      curl -SslL https://github.com/Raidriar796/HeadlessUserCulling/releases/latest/download/HeadlessUserCulling.dll -o ${HEADLESS_DIRECTORY}/rml_mods/HeadlessUserCulling.dll
+    fi
+
   fi
 
 fi
