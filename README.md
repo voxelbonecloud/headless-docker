@@ -6,7 +6,9 @@ Docker image based on Debian Bookworm Slim image with dotnet8 for hosting Resoni
 
 You can find examples for Portainer deployments in the [Portainer folder](portainer/)
 
-For a basic setup guide, follow [setup.md](setup.md)
+Setup Guides if you are new to Docker.
+- For a basic setup guide, follow [setup.md](setup guides\basic setup.md)
+- Dockge Setup Guide
 
 ## Before you start
 
