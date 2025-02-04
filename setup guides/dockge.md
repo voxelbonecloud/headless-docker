@@ -51,5 +51,56 @@ Once logged into Dockge, Click the ```+ Compose``` button in the top left.
 
 In this example we are going to use the [no external environment compose file found here](examples\compose-noenv-example.yml).  Paste the contents of this file into the compose window on the right as per this picture. Also give your stack a name.
 
-![Example Image of Dockge with pasted compose](\dockge\dockge-1.png)
+![Example Image of Dockge with pasted compose](dockge/dockge-1.png)
+
+Replace ```YourSteamUsername```, ```YourSteamPassword``` and the ```SteamBetaCode``` with the correct info. The SteamBetaCode can  be found by finding the Resonite bot in your Contacts list in game. Send ```/headlessCode``` to the bot and it will respond with the SteamBetaCode
+
+Once you have filled out the correct information, hit ```save```, Then ```Start```. You should see activity at the top of the page while it downloads the image. Once this is done, scroll down to the ```Terminal``` section and observe the server while it downloads and installs the headless files from steam.
+
+Once it has finished the setup, it should fail with an ```Config file not found``` error like the screenshot below. This is normal and means its working. We will add the config file in the next step. 
+
+![Example Image of Dockge with pasted compose](dockge/dockge-2.png)
+
+### Adding the Config File
+
+For this headless example we are going to use the directory Dockge sets up automatically, which would be /opt/stacks/myheadless to store the confg, logs instead of using a docker volume. To Do this we remove the Volume: section at the very bottom, and edit the volumes: section as follows. To edit, press the ```edit button``` on the page, this will unlock the compose text section for editing. Then Save afterwards.
+```
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./Headless_Configs:/Config
+      - ./Headless_Logs:/Logs
+      - ./RML:/RML
+```
+
+Using a ./ at the start will create the folders in the same folder as the compose file which was /opt/stacks/myheadless. Feel free to change this to another location that is easier for you one example could be ```/home/me/headless_Configs:/Config``` However for this example we will continue with the above snippet. 
+
+Your compose file will now look like this
+```
+services:
+  headless:
+    container_name: resonite-headless
+    image: ghcr.io/voxelbonecloud/headless-docker:main
+    environment:
+      CONFIG_FILE: Config.json
+      # ADDITIONAL_ARGUMENTS:
+      STEAM_USER: steamusername
+      STEAM_PASS: steampassword
+      BETA_CODE: headlesscode
+      STEAM_BRANCH: headless
+      LOG_RETENTION: 30
+      ENABLE_MODS: false
+    tty: true
+    stdin_open: true
+    user: 1000:1000
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./Headless_Configs:/Config
+      - ./Headless_Logs:/Logs
+      - ./RML:/RML
+    restart: on-failure:5
+networks: {}
+``` 
+Next we need to fix the permissions for this location, as the headless runs as user 1000. From a terminal run ```sudo chown -R 1000 /opt/stacks/myheadless```
+
+
 
