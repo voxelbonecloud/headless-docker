@@ -24,7 +24,9 @@ You will need a config file for the headless to load. Examples for Resonite Head
 The following compose file uses stack wide environmental variables to set common values that may be used across multiple headless servers in the one stack. This allows adjusting config files for individual servers but reuse for example steam credentials for downloading server files.
 
 For a version of the compose file not using the .env file then use [compose-noenv-example.yml](examples/compose-noenv-example.yml)
-or check the [example list](examples/examples.md) we have for different requirements you may want.
+or check the [example list](examples/examples.md) we have for different requirements you may want. The docker-compose.yml at the root of this repo is tailored for using git clone and compose up directly in a folder.
+
+Otherwise an example using volumes is below. 
 
 ```
 services:
