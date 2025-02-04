@@ -4,6 +4,8 @@
 
 This Guide assumes you have a supported version of linux pre installed.
 
+#### Known Caveat with Dockge. Dockge currently does not seem to support attaching to the resonite terminal, you will not be able to use headless commands via the terminal until this feature is added. 
+
 ### Docker Installation
 Official Docker installation instructions can be found at https://docs.docker.com/engine/install/
 
@@ -59,9 +61,9 @@ Once you have filled out the correct information, hit ```save```, Then ```Start`
 
 Once it has finished the setup, it should fail with an ```Config file not found``` error like the screenshot below. This is normal and means its working. We will add the config file in the next step. 
 
-![Example Image of Dockge with pasted compose](dockge/dockge-2.png)
+![Example Image of Dockge terminal](dockge/dockge-2.png)
 
-### Adding the Config File
+### Setting the folders we will use for the config and log files.
 
 For this headless example we are going to use the directory Dockge sets up automatically, which would be /opt/stacks/myheadless to store the confg, logs instead of using a docker volume. To Do this we remove the Volume: section at the very bottom, and edit the volumes: section as follows. To edit, press the ```edit button``` on the page, this will unlock the compose text section for editing. Then Save afterwards.
 ```
@@ -102,5 +104,26 @@ networks: {}
 ``` 
 Next we need to fix the permissions for this location, as the headless runs as user 1000. From a terminal run ```sudo chown -R 1000 /opt/stacks/myheadless```
 
+Afterwards start the headless again and wait, it will error again with the no config found, however you should see three folders now under the myheadless folder.
+
+### Adding the Config File
+Information about Resonites config file structure can be found on the [official wiki here](https://wiki.resonite.com/Headless_Server_Software/Configuration_File). For this guide we will be using an [example config from the wiki](https://wiki.resonite.com/Headless_Server_Software/Example_Configurations), in particular the Minimal version. 
+
+One way is to use Terminal, cd into the Headless_Configs folder ```cd /opt/stacks/myheadless/Headless_Configs``` then run your favorite text editor, for example ```nano``` .
+
+Copy and paste in your config json, then ctr + s to save, making sure to save it as Config.json. 
+
+![Example Image of our test config file](dockge/dockge-3.png)
+
+#### Important note, The config can be named anything you want, as long as it is the same name as what you have set in the docker compose environment ```CONFIG_FILE: Config.json```. As you can see the default is Config.json. This option allows you to paste many different config files in the directory that can be swapped to for example events. 
+
+You can use other methods that you prefer to copy the config files over such as ftp or use the GUI if installed..
 
 
+Once saved, you can hit start, wait for the headless to boot and state "world running". Then you are all done!.
+
+
+### Other notes 
+
+Instead of storing your environmental variables in the compose file, Dockge has a dedicated section for these. 
+To use this feature instead replace your environment section with ```env_file: .env```
